@@ -1,0 +1,11 @@
+services:
+  law-api:
+    build: .
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./data:/app/data
+    environment:
+      # 本地自用保持 0；对公网开放时改 1，并在 data/api_keys.json 配 token
+      LAW_API_ENFORCE: "0"
+    restart: unless-stopped
